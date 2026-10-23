@@ -1,3 +1,4 @@
+
 function createGrid(size){
 
     for(let i=0; i<size; i++){  // Create Rows Here
@@ -7,9 +8,17 @@ function createGrid(size){
         container.appendChild(rows);
 
             for(let i=0; i<size; i++){      // Insert Divs in The Current Row (Columns)
-                const square_div = document.createElement("div");
-                square_div.classList.add("square_div");
-                rows.appendChild(square_div);
+                const square = document.createElement("div");
+                square.classList.add("square_div");
+                let alphaValue = 0.1
+
+                square.addEventListener('mouseover', () => {
+                    alphaValue += 0.1;
+                    square.style.backgroundColor = `rgba(255, 0, 0, ${alphaValue})`;
+
+                });
+                
+                rows.appendChild(square);
             }
     }
 }
