@@ -1,3 +1,30 @@
+const content_div = document.querySelector(".content");
+const prompt_button = document.createElement("button");
+prompt_button.textContent = "Resize";
+prompt_button.style.padding = "5px";
+content_div.insertBefore(prompt_button, content_div.firstChild);
+
+    prompt_button.addEventListener("click", () => {
+        const delete_container = document.querySelector(".container");
+        let prompt_value = Math.floor(parseFloat(prompt("Enter Grid Size (2-64): ")));
+
+        if(Number.isNaN(prompt_value)){
+            return;
+        }
+        if(prompt_value > 64){
+            prompt_value = 64;
+        }
+        if(prompt_value < 2){
+            return;
+        }
+
+        while (delete_container.hasChildNodes()){
+            delete_container.removeChild(delete_container.lastChild);
+        }
+
+        createGrid(prompt_value);
+    });     
+
 function createGrid(size){
 
     for(let i=0; i<size; i++){  // Create Rows Here
@@ -25,5 +52,3 @@ function createGrid(size){
             }
     }
 }
-
-createGrid(16);

@@ -17,6 +17,11 @@ body {
     margin: 10px;
 }
 
+.content {
+    flex-direction: column;
+    gap: 10px;
+}
+
 .container{
 
     width: 500px;
